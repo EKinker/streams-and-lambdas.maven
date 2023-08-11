@@ -40,7 +40,7 @@ public final class PersonFactory {
      * @return - ArrayList of Person objects
      */ // TODO
     public List<Person> createPersonList(int listSize) {
-        return Stream.generate(()->createRandomPerson()).limit(listSize).collect(Collectors.toList());
+        return Stream.generate(this::createRandomPerson).limit(listSize).collect(Collectors.toList());
     }
 
 
@@ -62,6 +62,6 @@ public final class PersonFactory {
      */ // TODO
     public Stream<Person> createPersonStream(int streamCount) {  //could have done this one first
 
-        return  Stream.generate(()->createRandomPerson()).limit(streamCount);
+        return  Stream.generate(this::createRandomPerson).limit(streamCount);
     }
 }
