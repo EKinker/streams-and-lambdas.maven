@@ -44,7 +44,7 @@ public final class PersonWarehouse implements Iterable<Person> {
      */ //TODO
     public Stream<Person> getUniquelyNamedPeople() {  //sets for unique values
         Set<String> uniqueNames = new HashSet<>();
-        return people.stream()
+        return  people.stream()
                 .filter(person -> uniqueNames.add(person.getName()));
     }
 
@@ -74,11 +74,10 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return a mapping of Person Id to the respective Person name
      */ // TODO
     public Map<Long, String> getIdToNameMap() {
-        Map<Long, String> results = people.stream()
+        return people.stream()
                 .collect(Collectors.toMap(
-                        person -> person.getPersonalId(),
-                        person -> person.getName()));
-        return results;
+                        Person::getPersonalId,
+                        Person::getName));
     }
 
 
